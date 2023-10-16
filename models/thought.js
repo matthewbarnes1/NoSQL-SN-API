@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const reactionSchema = require('./reaction');  // Make sure to adjust the path accordingly
+const { dateFormat } = require('../utils/dateUtil');
 
 const thoughtSchema = new mongoose.Schema(
   {

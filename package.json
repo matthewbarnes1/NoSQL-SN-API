@@ -13,9 +13,9 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2",
+    "moment": "^2.29.4",
     "mongod": "^2.0.0",
     "mongoose": "^7.6.2",
     "nodemon": "^3.0.1"
-  },
-  "devDependencies": {}
+  }
 }

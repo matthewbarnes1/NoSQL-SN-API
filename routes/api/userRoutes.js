@@ -12,7 +12,6 @@ const {
 router.route('/')
     .get(getAllUsers)
     .post(createUser)
-    .put(updateUser); // Note: Generally, we don't put and post on the same route without a specific ID.
 
 router.route('/:id')
     .get(getUserById)

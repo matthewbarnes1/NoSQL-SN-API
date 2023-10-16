@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { dateFormat } = require('../utils/dateUtil');
 
 const userSchema = new mongoose.Schema({
   username: {
