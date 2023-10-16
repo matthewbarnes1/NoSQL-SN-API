@@ -1,42 +1,43 @@
 const router = require('express').Router();
-const userController = require('../controllers/userController');
 const thoughtController = require('../controllers/thoughtController');
+const userController = require('../controllers/userController');
 
-// User routes
+// * User routes
+
 router
-  .route('/users')
+  .route('/api/users')
   .get(userController.getAllUsers)
   .post(userController.createUser);
 
 router
-  .route('/users/:id')
+  .route('/api/users/:id')
   .get(userController.getUserById)
   .put(userController.updateUser)
   .delete(userController.deleteUser);
 
 router
-  .route('/users/:userId/friends/:friendId')
+  .route('/api/users/:userId/friends/:friendId')
   .post(userController.addFriend)
   .delete(userController.removeFriend);
 
-// Thought routes
+// * Thought routes
 router
-  .route('/thoughts')
+  .route('/api/thoughts')
   .get(thoughtController.getAllThoughts)
   .post(thoughtController.createThought);
 
 router
-  .route('/thoughts/:id')
+  .route('/api/thoughts/:id')
   .get(thoughtController.getThoughtById)
   .put(thoughtController.updateThought)
   .delete(thoughtController.deleteThought);
 
 router
-  .route('/thoughts/:thoughtId/reactions')
+  .route('/api/thoughts/:thoughtId/reactions')
   .post(thoughtController.addReaction);
 
 router
-  .route('/thoughts/:thoughtId/reactions/:reactionId')
+  .route('/api/thoughts/:thoughtId/reactions/:reactionId')
   .delete(thoughtController.removeReaction);
 
 module.exports = router;

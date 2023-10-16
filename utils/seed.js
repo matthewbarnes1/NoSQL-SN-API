@@ -19,8 +19,24 @@ async function seedDatabase() {
       email: 'alice@example.com',
     },
     {
-      username: 'bob456',
-      email: 'bob@example.com',
+      username: 'matt',
+      email: 'matt@example.com',
+    },
+    {
+      username: 'mark123',
+      email: 'markymark@example.com',
+    },
+    {
+      username: 'steven',
+      email: 'stevenssmart@example.com',
+    },
+    {
+      username: 'sophia',
+      email: 'sophia01@example.com',
+    },
+    {
+      username: 'randolph',
+      email: 'randy23@example.com',
     },
   ]);
 

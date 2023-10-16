@@ -9,4 +9,8 @@ const connectionString =
 
 connect(connectionString);
 
+connection.once('open', () => {
+  console.log('Mongoose connected successfully to MongoDB!');
+});
+
 module.exports = connection;

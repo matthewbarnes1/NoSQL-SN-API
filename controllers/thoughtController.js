@@ -1,5 +1,5 @@
-const { Thought, User } = require('../models');
-
+const { User, Thought } = require('../models/index');
+ 
 const thoughtController = {
     async getAllThoughts(req, res) {
         try {
