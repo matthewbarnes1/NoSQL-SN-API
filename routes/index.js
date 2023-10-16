@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const { userController } = require('../controllers/userController');
-const { thoughtController } = require('../controllers/thoughtController');
+const userController = require('../controllers/userController');
+const thoughtController = require('../controllers/thoughtController');
 
 // User routes
 router

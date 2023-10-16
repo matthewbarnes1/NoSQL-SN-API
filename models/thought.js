@@ -1,10 +1,12 @@
 const mongoose = require('mongoose');
 const { reactionSchema } = require('./reaction');
 
-
 const thoughtSchema = new mongoose.Schema(
   {
-    reactions: [reactionSchema],
+    reactions: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Reaction'
+    }],
     thoughtText: {
       type: String,
       required: true,
@@ -19,19 +21,20 @@ const thoughtSchema = new mongoose.Schema(
     username: {
       type: String,
       required: true
-    },
+    }
+  },
+  { // This is the correct place for the toJSON configuration and the id option
     toJSON: {
       virtuals: true,
       getters: true
     },
-    id: false
+    id: false  
   }
 );
 
 thoughtSchema.virtual('reactionCount').get(function() {
   return this.reactions.length;
 });
-
 
 // function dateFormat(timestamp) {
 //   return formattedTimestamp;
