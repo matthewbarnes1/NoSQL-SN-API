@@ -1,4 +1,4 @@
-const { User, Thought } = require('../models/index');
+const { User, Thought } = require('../models');
 
 const userController = {
     async getAllUsers(req, res) {
@@ -6,7 +6,7 @@ const userController = {
             const users = await User.find().populate('thoughts').populate('friends');
             res.json(users);
         } catch (err) {
-            res.status(500).json(err);
+            res.status(500).json({ message: 'Failed to fetch all users', error: err.message });
         }
     },
 
@@ -18,7 +18,7 @@ const userController = {
             }
             res.json(user);
         } catch (err) {
-            res.status(500).json(err);
+            res.status(500).json({ message: 'Failed to fetch user by ID', error: err.message });
         }
     },
 
@@ -27,7 +27,7 @@ const userController = {
             const user = await User.create(req.body);
             res.json(user);
         } catch (err) {
-            res.status(500).json(err);
+            res.status(500).json({ message: 'Failed to create user', error: err.message });
         }
     },
 
@@ -39,7 +39,7 @@ const userController = {
             }
             res.json(user);
         } catch (err) {
-            res.status(500).json(err);
+            res.status(500).json({ message: 'Failed to update user', error: err.message });
         }
     },
 
@@ -49,11 +49,11 @@ const userController = {
             if (!user) {
                 return res.status(404).json({ message: 'No user found with this id!' });
             }
-            // BONUS: Remove a user's associated thoughts when deleted.
+            // Deleting a user's associated thoughts
             await Thought.deleteMany({ username: user.username });
             res.json({ message: 'User and associated thoughts deleted!' });
         } catch (err) {
-            res.status(500).json(err);
+            res.status(500).json({ message: 'Failed to delete user', error: err.message });
         }
     },
 
@@ -65,7 +65,7 @@ const userController = {
             }
             res.json(user);
         } catch (err) {
-            res.status(500).json(err);
+            res.status(500).json({ message: 'Failed to add friend', error: err.message });
         }
     },
 
@@ -77,7 +77,7 @@ const userController = {
             }
             res.json(user);
         } catch (err) {
-            res.status(500).json(err);
+            res.status(500).json({ message: 'Failed to remove friend', error: err.message });
         }
     }
 };
