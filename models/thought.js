@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
+const { reactionSchema } = require('./reaction');
 
 
 const thoughtSchema = new mongoose.Schema(
   {
+    reactions: [reactionSchema],
     thoughtText: {
       type: String,
       required: true,
@@ -18,9 +20,6 @@ const thoughtSchema = new mongoose.Schema(
       type: String,
       required: true
     },
-    reactions: [reactionSchema]
-  },
-  {
     toJSON: {
       virtuals: true,
       getters: true
